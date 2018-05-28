@@ -2,11 +2,38 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
     </div>
-    <router-view/>
+    <router-view 
+      :auth="auth" 
+      :authenticated="authenticated">
+    </router-view>
+    <button @click="login">Login</button>
+    <button @click="logout">Logout</button>
   </div>
 </template>
+<script>
+import AuthService from "./services/AuthService";
+const auth = new AuthService();
+const { login, logout, authenticated, authNotifier } = auth;
+
+export default {
+  name: "home",
+  data() {
+    authNotifier.$on("authChange", authState => {
+      console.log("Auth changed");
+      this.authenticated = authState.authenticated;
+    });
+    return {
+      auth,
+      authenticated
+    };
+  },
+  methods: {
+    login,
+    logout
+  }
+};
+</script>
 
 <style>
 #app {
