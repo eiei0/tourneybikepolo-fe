@@ -9,7 +9,6 @@ export default {
   name: "callback",
   props: ["auth"],
   data() {
-    debugger;
     this.auth.handleAuthentication();
     return {};
   }
