@@ -7,6 +7,11 @@
 <script>
 export default {
   name: "Home",
-  props: ["authenticated"]
+  props: {
+    authenticated: {
+      type: Boolean,
+      default: false
+    }
+  }
 };
 </script>
