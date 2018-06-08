@@ -6,6 +6,7 @@ import Vue from "vue";
 export default class AuthService {
   authenticated = this.isAuthenticated();
   authNotifier = new Vue();
+  userProfile;
 
   constructor() {
     this.login = this.login.bind(this);
@@ -18,9 +19,9 @@ export default class AuthService {
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
-    audience: `https://${AUTH_CONFIG.domain}/userinfo`,
+    audience: `https://tourneybikepolo.com`,
     responseType: "token id_token",
-    scope: "openid"
+    scope: "openid profile email"
   });
 
   login() {
@@ -31,6 +32,7 @@ export default class AuthService {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
+        this.getUserProfile();
         router.replace("/");
       } else if (err) {
         router.replace("/");
@@ -67,5 +69,23 @@ export default class AuthService {
     // access token's expiry time
     let expiresAt = JSON.parse(localStorage.getItem("expires_at"));
     return new Date().getTime() < expiresAt;
+  }
+
+  getAccessToken() {
+    const accessToken = localStorage.getItem("access_token");
+    if (!accessToken) {
+      throw new Error("No access token found");
+    }
+    return accessToken;
+  }
+
+  getUserProfile(callback) {
+    let accessToken = this.getAccessToken();
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      if (profile) {
+        this.userProfile = profile;
+      }
+      if (callback) callback(err, profile);
+    });
   }
 }

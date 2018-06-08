@@ -2,6 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
+      <TopBar :auth="auth" :authenticated="authenticated"/>
     </div>
     <router-view 
       :auth="auth" 
@@ -13,11 +14,15 @@
 </template>
 <script>
 import AuthService from "./services/AuthService";
+import TopBar from "./components/TopBar";
 const auth = new AuthService();
 const { login, logout, authenticated, authNotifier } = auth;
 
 export default {
   name: "home",
+  components: {
+    TopBar
+  },
   data() {
     authNotifier.$on("authChange", authState => {
       console.log("Auth changed");
