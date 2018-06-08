@@ -6,8 +6,13 @@
 
 <script>
 export default {
-  name: "callback",
-  props: ["auth"],
+  name: "Callback",
+  props: {
+    auth: {
+      type: String,
+      default: ""
+    }
+  },
   data() {
     this.auth.handleAuthentication();
     return {};

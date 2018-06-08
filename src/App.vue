@@ -2,12 +2,13 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <TopBar :auth="auth" :authenticated="authenticated"/>
+      <TopBar
+        :auth="auth"
+        :authenticated="authenticated"/>
     </div>
-    <router-view 
-      :auth="auth" 
-      :authenticated="authenticated">
-    </router-view>
+    <router-view
+      :auth="auth"
+      :authenticated="authenticated"/>
     <button @click="login">Login</button>
     <button @click="logout">Logout</button>
   </div>
@@ -19,7 +20,7 @@ const auth = new AuthService();
 const { login, logout, authenticated, authNotifier } = auth;
 
 export default {
-  name: "home",
+  name: "Home",
   components: {
     TopBar
   },
