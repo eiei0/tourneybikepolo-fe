@@ -1,21 +1,31 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
+    <v-app>
       <TopBar
         :auth="auth"
         :authenticated="authenticated"/>
-    </div>
-    <router-view
-      :auth="auth"
-      :authenticated="authenticated"/>
-    <button @click="login">Login</button>
-    <button @click="logout">Logout</button>
+      <v-content>
+        <v-container fluid>
+          <v-layout
+            row
+            wrap>
+            <v-flex xs12>
+              <router-view
+                :auth="auth"
+                :authenticated="authenticated"/>
+            </v-flex>
+            <button @click="login">Login</button>
+            <button @click="logout">Logout</button>
+          </v-layout>
+        </v-container>
+      </v-content>
+    </v-app>
   </div>
 </template>
 <script>
 import AuthService from "./services/AuthService";
 import TopBar from "./components/TopBar";
+
 const auth = new AuthService();
 const { login, logout, authenticated, authNotifier } = auth;
 
@@ -31,7 +41,7 @@ export default {
     });
     return {
       auth,
-      authenticated
+      authenticated,
     };
   },
   methods: {
@@ -42,23 +52,7 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.application--wrap {
+  background-color: #ffffff;
 }
 </style>
