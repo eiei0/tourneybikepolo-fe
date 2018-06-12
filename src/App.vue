@@ -11,11 +11,8 @@
             wrap>
             <v-flex xs12>
               <router-view
-                :auth="auth"
                 :authenticated="authenticated"/>
             </v-flex>
-            <button @click="login">Login</button>
-            <button @click="logout">Logout</button>
           </v-layout>
         </v-container>
       </v-content>
@@ -34,14 +31,18 @@ export default {
   components: {
     TopBar
   },
+  ready() {
+    this.$on("loginAttempt", () => {
+      this.login;
+    });
+  },
   data() {
     authNotifier.$on("authChange", authState => {
-      console.log("Auth changed");
       this.authenticated = authState.authenticated;
     });
     return {
       auth,
-      authenticated,
+      authenticated
     };
   },
   methods: {

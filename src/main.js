@@ -6,7 +6,11 @@ import store from "./store";
 
 import "vuetify/dist/vuetify.min.css";
 
-Vue.use(Vuetify);
+Vue.use(Vuetify, {
+  theme: {
+    azure: "#00a2ff"
+  }
+});
 
 Vue.config.productionTip = false;
 

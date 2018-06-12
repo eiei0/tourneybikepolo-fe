@@ -9,6 +9,22 @@
           <v-flex>
             <h1>Bike polo tournaments the right way.</h1>
             <h2 class="subheading">Free as long as your tournament is.</h2>
+            <v-btn
+              v-if="!authenticated"
+              class="home-page-btns"
+              dark
+              color="azure"
+              @click="login">
+              Login
+            </v-btn>
+            <v-btn
+              v-if="!authenticated"
+              outline
+              class="home-page-btns"
+              color="azure"
+              @click="login">
+              Login
+            </v-btn>
           </v-flex>
         </v-layout>
       </v-container>
@@ -24,42 +40,43 @@ export default {
       type: String,
       default: ""
     }
+  },
+  methods: {
+    login() {
+      this.$emit("loginAttempt");
+    }
   }
 };
 </script>
 
 <style>
 img {
-  width: 758px;
-  height: 1024px;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
   position: absolute;
   top: 0px;
   right: 0px;
 }
 .home h1 {
-  width: 781px;
-  height: 55px;
   font-family: "Open Sans", sans-serif;
   font-size: 40px;
-  font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
   line-height: normal;
-  letter-spacing: normal;
   color: #000000;
-  color: var(--black);
 }
 .home h2 {
-  width: 742px;
-  height: 43px;
   font-family: "Open Sans", sans-serif;
   font-size: 32px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
   color: #a7a7a7;
+}
+.home-page-btns {
+  width: 111px;
+}
+button .btn:not(.btn--depressed) {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12) !important;
+}
+button .btn-content {
+  width: 111px !important;
 }
 </style>
