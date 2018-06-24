@@ -29,12 +29,6 @@
         </v-layout>
       </v-container>
     </v-jumbotron>
-<<<<<<< HEAD
-    <img
-      class="background_image"
-      src="../assets/background-image.png">
-=======
->>>>>>> c6517c8f8c489b03dc19c88e769dac6384909881
   </div>
 </template>
 
@@ -43,10 +37,6 @@ export default {
   name: "Home",
   props: {
     authenticated: {
-<<<<<<< HEAD
-      type: Boolean,
-      default: false
-=======
       type: String,
       default: ""
     }
@@ -54,7 +44,6 @@ export default {
   methods: {
     login() {
       this.$emit("loginAttempt");
->>>>>>> c6517c8f8c489b03dc19c88e769dac6384909881
     }
   }
 };
@@ -62,41 +51,13 @@ export default {
 
 <style>
 img {
-<<<<<<< HEAD
-  width: 758px;
-  height: 1024px;
-  object-fit: contain;
-=======
   height: 100%;
   object-fit: cover;
->>>>>>> c6517c8f8c489b03dc19c88e769dac6384909881
   position: absolute;
   top: 0px;
   right: 0px;
 }
 .home h1 {
-<<<<<<< HEAD
-  width: 781px;
-  height: 55px;
-  font-family: "Open Sans", sans-serif;
-  font-size: 40px;
-  font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: #000000;
-  color: var(--black);
-}
-.home h2 {
-  width: 742px;
-  height: 43px;
-  font-family: "Open Sans", sans-serif;
-  font-size: 32px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-=======
   font-family: "Open Sans", sans-serif;
   font-size: 40px;
   line-height: normal;
@@ -105,13 +66,10 @@ img {
 .home h2 {
   font-family: "Open Sans", sans-serif;
   font-size: 32px;
->>>>>>> c6517c8f8c489b03dc19c88e769dac6384909881
   line-height: normal;
   letter-spacing: normal;
   color: #a7a7a7;
 }
-<<<<<<< HEAD
-=======
 .home-page-btns {
   width: 111px;
 }
@@ -121,5 +79,4 @@ button .btn:not(.btn--depressed) {
 button .btn-content {
   width: 111px !important;
 }
->>>>>>> c6517c8f8c489b03dc19c88e769dac6384909881
 </style>
