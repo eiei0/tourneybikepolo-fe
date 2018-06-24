@@ -9,8 +9,8 @@ export default {
   name: "Callback",
   props: {
     auth: {
-      type: Object,
-      default: () => ({})
+      type: String,
+      default: ""
     }
   },
   data() {
