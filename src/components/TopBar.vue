@@ -73,10 +73,6 @@ export default {
     authenticated: {
       type: Boolean,
       default: false
-    },
-    auth: {
-      type: Object,
-      required: true
     }
   },
   data() {
@@ -89,14 +85,15 @@ export default {
       ]
     };
   },
-  computed: {
-    user() {
-      return this.auth.userProfile;
-    }
-  },
+  // computed: {
+  //   user() {
+  //     return this.auth.userProfile;
+  //   }
+  // },
   methods: {
     login() {
-      this.$emit("loginAttempt");
+      console.log("log me in");
+      this.$router.push({ path: "dashboard" });
     }
   }
 };

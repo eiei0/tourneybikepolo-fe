@@ -10,7 +10,6 @@
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
-    "auth0-js": "^9.5.1",
     "node-jose": "^1.0.0",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",

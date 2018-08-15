@@ -7,18 +7,16 @@
       <v-container>
         <v-layout>
           <v-flex>
-            <h1>Bike polo tournaments the right way.</h1>
+            <h1 class="heading">Bike Polo the <em>right</em> way.</h1>
             <h2 class="subheading">Free as long as your tournament is.</h2>
             <v-btn
-              v-if="!authenticated"
               class="home-page-btns"
               dark
               color="azure"
-              @click="login">
-              Login
+              @click="signUp">
+              Sign Up
             </v-btn>
             <v-btn
-              v-if="!authenticated"
               outline
               class="home-page-btns"
               color="azure"
@@ -35,15 +33,20 @@
 <script>
 export default {
   name: "Home",
-  props: {
-    authenticated: {
-      type: String,
-      default: ""
-    }
-  },
+  // props: {
+  //   authenticated: {
+  //     type: Boolean,
+  //     default: false
+  //   }
+  // },
   methods: {
     login() {
-      this.$emit("loginAttempt");
+      console.log("log me in");
+      this.$router.push({ path: "dashboard" });
+    },
+    signUp() {
+      console.log("sign me up");
+      this.$router.push({ path: "signup" });
     }
   }
 };
@@ -68,7 +71,7 @@ img {
   font-size: 32px;
   line-height: normal;
   letter-spacing: normal;
-  color: #a7a7a7;
+  color: #5e5d5d;
 }
 .home-page-btns {
   width: 111px;
