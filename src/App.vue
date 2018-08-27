@@ -23,17 +23,7 @@ export default {
   name: "Home",
   components: {
     TopBar
-  },
-//   data() {
-//     return {
-//       authenticated: false
-//     };
-//   },
-//   methods: {
-//     login() {
-//       console.log("should log in");
-//     }
-//   }
+  }
 };
 </script>
 
